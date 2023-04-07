@@ -1,0 +1,17 @@
+f = open('26.txt')
+k,n = int(f.readline()), int(f.readline())
+time, summa, number = [], 0, 0
+cells = [[0 for i in range(1500)] for j in range(k)]
+for i in range(n):
+    start, end = map(int, f.readline().split())
+    time.append([start, end])
+time.sort()
+for i in time:
+    number = 0
+    for j in cells:
+        number += 1
+        if (sum(j[i[0]:i[1]+1])) == 0:
+            for y in range(i[0], i[1]+1): j[y] = 1
+            summa += 1
+            break
+print(summa, number)
